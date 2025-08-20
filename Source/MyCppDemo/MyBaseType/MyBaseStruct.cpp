@@ -1,0 +1,1 @@
+#include "MyBaseStruct.h"
