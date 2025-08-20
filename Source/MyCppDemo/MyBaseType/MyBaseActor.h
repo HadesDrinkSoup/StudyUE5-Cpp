@@ -15,6 +15,14 @@ public:
 	// Sets default values for this actor's properties
 	AMyBaseActor();
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "MyClass")
+	int32 Health = 100;
+
+	UFUNCTION(BlueprintCallable, Category = "MyClass")
+	int32 GetCurrentHealth();
+	UFUNCTION(BlueprintCallable, Category = "MyClass")
+	int32 GetCDOHealth();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
