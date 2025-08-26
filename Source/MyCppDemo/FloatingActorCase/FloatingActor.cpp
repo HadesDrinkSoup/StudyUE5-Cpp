@@ -1,13 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "MyFirstCase/FloatingActor.h"
+#include "FloatingActorCase/FloatingActor.h"
 
 // 构造函数：在对象创建时调用
 AFloatingActor::AFloatingActor()
 {
     // 设置此Actor每帧调用Tick()，如果不需要可以提高性能关闭此特性
     PrimaryActorTick.bCanEverTick = true;
-
+    
     // 创建静态网格组件并命名为"VisualMesh"
     VisualMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualMesh"));
     // 将网格组件附加到根组件（RootComponent）

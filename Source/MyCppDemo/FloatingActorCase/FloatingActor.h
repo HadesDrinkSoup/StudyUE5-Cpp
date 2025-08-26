@@ -20,6 +20,7 @@ public:
 	AFloatingActor();
 
 	// 静态网格体组件指针，用于视觉表现
+	UPROPERTY(VisibleDefaultsOnly)
 	UStaticMeshComponent* VisualMesh;
 
 	// 浮动速度参数，可在编辑器和蓝图中调整
