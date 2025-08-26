@@ -6,30 +6,15 @@
 #include "GameFramework/Actor.h"
 #include "CameraSwitch.generated.h"
 
-/**
- * ACameraSwitch类
- * 用于在两个相机之间切换的Actor
- * 支持定时切换和平滑过渡效果
- */
-UCLASS()
-class MYCPPDEMO_API ACameraSwitch : public AActor
+USTRUCT(BlueprintType)
+struct FCameraSwitchInfo
 {
 	GENERATED_BODY()
-
 public:
-	// 构造函数，设置默认值
-	ACameraSwitch();
 
-	// 相机一的引用，可在编辑器任意位置编辑
+	// 相机的引用，可在编辑器任意位置编辑
 	UPROPERTY(EditAnywhere)
-	AActor* CameraOne;
-
-	// 相机二的引用，可在编辑器任意位置编辑
-	UPROPERTY(EditAnywhere)
-	AActor* CameraTwo;
-
-	// 下一次相机切换的倒计时
-	float TimeToNextCameraChange;
+	AActor* Camera = nullptr;
 
 	// 相机切换的时间间隔（秒），可在蓝图读写，归类为ChangeCamera
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ChangeCamera")
@@ -39,9 +24,25 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ChangeCamera")
 	float SmoothBlendTime = 0.75f;
 
+};
+
+UCLASS()
+class MYCPPDEMO_API ACameraSwitch : public AActor
+{
+	GENERATED_BODY()
+
+public:
+	// 构造函数，设置默认值
+	ACameraSwitch();
+
+	// 下一次相机切换的倒计时
+	float TimeToNextCameraChange;
+
 	// 玩家控制器引用，用于控制相机视图切换
 	APlayerController* OurPlayerController;
 
+	// 当前相机索引
+	int32 CurrentCameraIndex = 0;
 
 protected:
 	// 游戏开始或生成时调用
@@ -50,4 +51,14 @@ protected:
 public:
 	// 每帧调用
 	virtual void Tick(float DeltaTime) override;
+
+	// 查找所有摄像机
+	void FindAllCameras();
+
+private:
+
+	// 相机列表，包含多个相机及其切换参数
+	UPROPERTY(VisibleAnywhere, Category = "CameraList")
+	TArray<FCameraSwitchInfo> CameraList;
+
 };
