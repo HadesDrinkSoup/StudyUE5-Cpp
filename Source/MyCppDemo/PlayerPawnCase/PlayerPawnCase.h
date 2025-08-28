@@ -1,4 +1,3 @@
-// 版权所有 (c) 您的公司名称。保留所有权利。
 
 #pragma once
 
@@ -60,7 +59,7 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
     class UInputAction* LookAction;
 
-    // 输入动作：缩放
+    // 输入动作：镜头缩放
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
     class UInputAction* ZoomAction;
 

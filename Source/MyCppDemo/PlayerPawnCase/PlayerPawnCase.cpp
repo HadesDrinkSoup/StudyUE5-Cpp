@@ -1,4 +1,4 @@
-// 版权所有 (c) 您的公司名称。保留所有权利。
+
 
 #include "PlayerPawnCase.h"
 #include "EnhancedInputComponent.h"
@@ -36,7 +36,6 @@ APlayerPawnCase::APlayerPawnCase()
 
 	// 配置摄像机属性
 	CameraComp->bUsePawnControlRotation = false; // 摄像机不直接跟随控制器旋转
-	CameraComp->SetRelativeRotation(FRotator(0.0f, 0.0f, 20.0f)); // 设置相对旋转
 
 	// 自动拥有玩家0
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
@@ -51,13 +50,9 @@ APlayerPawnCase::APlayerPawnCase()
 void APlayerPawnCase::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// 获取玩家控制器并设置输入模式
+	// 获取玩家控制器
 	if (APlayerController* PC = Cast<APlayerController>(GetController()))
 	{
-		PC->bShowMouseCursor = false; // 隐藏鼠标光标
-		PC->SetInputMode(FInputModeGameOnly()); // 设置为仅游戏输入模式
-
 		// 添加增强输入映射上下文
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PC->GetLocalPlayer()))
 		{
