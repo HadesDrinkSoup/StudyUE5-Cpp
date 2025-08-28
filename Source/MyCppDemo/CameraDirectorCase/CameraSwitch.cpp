@@ -84,8 +84,8 @@ void ACameraSwitch::FindAllCameras()
         {
             // 创建新的相机信息结构体
             FCameraSwitchInfo NewCameraInfo;
-            // 设置相机引用
-            NewCameraInfo.Camera = CameraActor;
+            // 设置相机引用（需要强制类型转换为ACameraActor*）
+            NewCameraInfo.Camera = Cast<ACameraActor>(CameraActor);
             // 将相机信息添加到列表中
             CameraList.Add(NewCameraInfo);
         }

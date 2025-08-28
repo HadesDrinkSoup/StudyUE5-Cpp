@@ -14,7 +14,7 @@ public:
 
 	// 相机的引用，可在编辑器任意位置编辑
 	UPROPERTY(EditAnywhere)
-	AActor* Camera = nullptr;
+	ACameraActor* Camera = nullptr;
 
 	// 相机切换的时间间隔（秒），可在蓝图读写，归类为ChangeCamera
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ChangeCamera")
@@ -58,7 +58,7 @@ public:
 private:
 
 	// 相机列表，包含多个相机及其切换参数
-	UPROPERTY(VisibleAnywhere, Category = "CameraList")
+	UPROPERTY(EditAnywhere, Category = "CameraList")
 	TArray<FCameraSwitchInfo> CameraList;
 
 };
