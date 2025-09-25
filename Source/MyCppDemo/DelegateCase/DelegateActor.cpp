@@ -20,14 +20,15 @@ void ADelegateActor::BeginPlay()
     MyActorRef = CastChecked<AMyActor>(MyActor);
 
     // 委托绑定代码（当前被注释掉）
-    /*if (MyActorRef)
+    if (MyActorRef)
     {
         // 绑定无参数委托到无参数回调函数
         //MyActorRef->ScoreChangeDelegate.BindUObject(this, &ADelegateActor::OnScoreChange);
 
         // 绑定带参数委托到带参数回调函数
-        MyActorRef->ScoreChangeDelegate_OneParam.BindUObject(this, &ADelegateActor::OnScoreChange);
-    }*/
+		int32 Health = 100;
+        MyActorRef->ScoreChangeDelegate_OneParam.BindUObject(this, &ADelegateActor::OnScoreChange, Health);
+    }
 }
 
 // 每帧调用
@@ -48,7 +49,7 @@ void ADelegateActor::OnScoreChange()
 
 // 带参数的委托回调函数
 // @param Score - 传递的分数值（虽然未使用，但委托签名需要）
-void ADelegateActor::OnScoreChange(int32 Score)
+void ADelegateActor::OnScoreChange(int32 Score, int32 Health)
 {
     // 当分数变化时，调用MyActor的打印分数方法
     // 注意：这里没有使用传入的Score参数，只是调用了相同的打印方法

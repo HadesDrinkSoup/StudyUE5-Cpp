@@ -27,7 +27,7 @@ public:
 
 	// 委托回调函数 - 带参数版本
 	// @param Score - 传递的分数值
-	void OnScoreChange(int32 Score);
+	void OnScoreChange(int32 Score, int32 Health);
 
 private:
 	// 指向MyActor的引用（用于绑定委托和调用方法）
