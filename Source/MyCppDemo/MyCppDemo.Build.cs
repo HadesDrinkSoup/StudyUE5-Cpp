@@ -14,7 +14,7 @@ public class MyCppDemo : ModuleRules
 			}
 		);
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "Niagara" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "Niagara", "GameplayTags" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
 
